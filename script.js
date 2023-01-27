@@ -28,6 +28,15 @@ function createTimeSlot() {
     }
 }
 
+function onSaveTask () {
+    var hour = $(e.target).parent().parent().attr('data-hour');
+    var task = $(e.target).parent().prev().children().val();
+
+    localStorage.setItem(hour, task);
+
+    console.log("saved")
+}
+
 
 /*     <div class="row">
       <div class="col-sm-2 hour">11am</div>
