@@ -28,6 +28,17 @@ function createTimeSlot() {
     }
 }
 
+/*     <div class="row">
+      <div class="col-sm-2 hour">11am</div>
+      <div class="col-sm-8 row past">
+        <textarea class="col-md-10 description"></textarea>
+      </div>
+      <div class="col-sm-2">
+        <button class="btn btn-primary saveBtn">Save</button>
+      </div>
+    </div>
+*/
+
 function onSaveTask(e) {
     var hour = $(e.target).parent().parent().attr("data-hour");
     var task = $(e.target).parent().prev().children().val();
@@ -57,14 +68,21 @@ function updateTimeSlot () {
         });
     }
 
+    function init () {
 
-/*     <div class="row">
-      <div class="col-sm-2 hour">11am</div>
-      <div class="col-sm-8 row past">
-        <textarea class="col-md-10 description"></textarea>
-      </div>
-      <div class="col-sm-2">
-        <button class="btn btn-primary saveBtn">Save</button>
-      </div>
-    </div>
-*/
+        generateTimeSlots ();
+
+        updateTimeSlots ();
+
+        var currentDay = moment().format("dddd MMMM Do YYYY, h:mm:ss a");
+        $("#currentDay").text(currentDay);
+
+        setInterval(function () {
+
+            updateTimeSlots();
+
+        }, 10000);
+
+        }
+
+        init ();
