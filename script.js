@@ -28,7 +28,7 @@ function createTimeSlot() {
     }
 }
 
-function onSaveTask () {
+function onSaveTask(e) {
     var hour = $(e.target).parent().parent().attr('data-hour');
     var task = $(e.target).parent().prev().children().val();
 
