@@ -70,16 +70,16 @@ function updateTimeSlot () {
 
     function init () {
 
-        generateTimeSlots ();
+        createTimeSlot();
 
-        updateTimeSlots ();
+        updateTimeSlot();
 
         var currentDay = moment().format("dddd MMMM Do YYYY, h:mm:ss a");
         $("#currentDay").text(currentDay);
 
         setInterval(function () {
 
-            updateTimeSlots();
+            updateTimeSlot();
 
         }, 10000);
 
