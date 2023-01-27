@@ -1,0 +1,1 @@
+var currentDay = $('#time-display');
