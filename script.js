@@ -2,7 +2,7 @@ var currentDay = $('#time-display');
 
 var options = {
     startHour: 9,
-    endHour: 17,
+    endHour: 23,
 }
 
 function createTimeSlot() {
@@ -29,7 +29,7 @@ function createTimeSlot() {
         timeSlot.append(saveContainer);
         saveContainer.append(saveButton);
 
-        $(".container").append(timeslot);
+        $(".container").append(timeSlot);
     }
 }
 
@@ -64,10 +64,10 @@ function updateTimeSlot () {
             $(element).find(".description").addClass("past");
         }
         else if (hour == currentHour) {
-            $(element).find("description").addClass("present");
+            $(element).find(".description").addClass("present");
         }
         else {
-            $(element).find("description").addClass("future");
+            $(element).find(".description").addClass("future");
         }
 
         });
