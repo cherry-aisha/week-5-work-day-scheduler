@@ -1,5 +1,10 @@
 var currentDay = $('#time-display');
 
+var options = {
+    startHour: 9,
+    endHour: 17,
+}
+
 function createTimeSlot() {
     for (var hour = options.startHour; hour <= options.endHour; hour++) {
 
@@ -12,9 +17,9 @@ function createTimeSlot() {
         var hourSlot = $("<div>").addClass("col-sm-2 hour").text(moment(hour, "h").format("h A"));
         var description = $("<div>").addClass("col-sm-8 row");
         var textArea = $("<textarea>").addClass("col-md-10 description");
-        textArea.vav(savedTask);
+        textArea.val(savedTask);
 
-        var saveContainer = $("<div>").addClass("saveBtn d-flex justify-content-center align-items-center contain");
+        var saveContainer = $("<div>").addClass("saveBtn d-flex justify-content-center align-items-center");
         saveContainer.on("click", onSaveTask);
         var saveButton = $("<i>").addClass("fas fa-save");
 
@@ -40,12 +45,12 @@ function createTimeSlot() {
 */
 
 function onSaveTask(e) {
-    var hour = $(e.target).parent().parent().attr("data-hour");
+    var hour = $(e.target).parent().parent().attr("hour");
     var task = $(e.target).parent().prev().children().val();
 
     localStorage.setItem(hour, task);
 
-    console.log("saved")
+    console.log("saved");
 }
 
 function updateTimeSlot () {
@@ -68,7 +73,7 @@ function updateTimeSlot () {
         });
     }
 
-    function init () {
+    function init() {
 
         createTimeSlot();
 
@@ -85,4 +90,4 @@ function updateTimeSlot () {
 
         }
 
-        init ();
+        init();
