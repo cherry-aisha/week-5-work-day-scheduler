@@ -2,22 +2,21 @@ var currentDay = $('#time-display');
 
 var options = {
     startHour: 9,
-    endHour: 5,
+    endHour: 17,
 }
 
 function createTimeSlot() {
     for (var hour = options.startHour; hour <= options.endHour; hour++) {
-
+        console.log(hour);
         //Loads task from local storage
         var savedTask = localStorage.getItem(hour);
         
         var timeSlot = $('<div>').addClass('row time-block');
         timeSlot.attr('data-hour', hour);
 
-        var hourSlot = $('<div>').addClass('col-sm-2 hour').text(moment(hour, 'h').format('h A'));
+        var hourSlot = $('<div id=hour>').addClass('col-sm-2 hour').text(moment(hour, 'h').format('h A'));
         var description = $('<div>').addClass('col-sm-8 row');
-        var textArea = $('<textarea>').addClass('col-md-10 description');
-        textArea.val(savedTask);
+        var textArea = $('<textarea>').addClass('col-md-10 description').val(savedTask);
 
         var saveContainer = $('<div>').addClass('saveBtn d-flex justify-content-center align-items-center');
         saveContainer.on('click', onSaveTask);
@@ -33,7 +32,7 @@ function createTimeSlot() {
     }
 }
 
-/*     <div class='row'>
+/*  <div class='row'>
       <div class='col-sm-2 hour'>11am</div>
       <div class='col-sm-8 row past'>
         <textarea class='col-md-10 description'></textarea>
@@ -45,7 +44,7 @@ function createTimeSlot() {
 */
 
 function onSaveTask(e) {
-    var hour = $(e.target).parent().parent().attr('data-hour');
+    var hour = $(e.target).parent().parent().attr()(hour);
     var task = $(e.target).parent().prev().children().val();
 
     localStorage.setItem(hour, task);
@@ -61,22 +60,22 @@ function updateTimeSlot () {
         var hour = $(element).attr('data-hour');
 
         if(hour < currentHour) {
-            $(element).find('.description').addClass('past');
+            $(element).find('.description').addClass('past')
         }
         else if (hour == currentHour) {
-            $(element).find('.description').addClass('present');
+            $(element).find('.description').addClass('present')
         }
         else {
-            $(element).find('.description').addClass('future');
+            $(element).find('.description').addClass('future')
         }
 
         });
     }
 
     function init() {
-
+        console.log("init blad");
         createTimeSlot();
-
+        console.log("time slot");
         updateTimeSlot();
 
         var currentDay = moment().format('dddd MMMM Do YYYY, h:mm:ss a');
