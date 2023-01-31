@@ -1,4 +1,5 @@
-var currentDay = $('#time-display');
+var today = moment();
+
 
 var options = {
     startHour: 9,
@@ -44,7 +45,8 @@ function createTimeSlot() {
 */
 
 function onSaveTask(e) {
-    var hour = $(e.target).parent().parent().attr()(hour);
+
+    var hour = $(e.target).parent().parent().attr("description")(hour);
     var task = $(e.target).parent().prev().children().val();
 
     localStorage.setItem(hour, task);
@@ -73,19 +75,20 @@ function updateTimeSlot () {
     }
 
     function init() {
-        console.log("init blad");
+        
         createTimeSlot();
-        console.log("time slot");
-        updateTimeSlot();
 
-        var currentDay = moment().format('dddd MMMM Do YYYY, h:mm:ss a');
-        $('#currentDay').text(currentDay);
+        $('.lead').text(today.format('MMM Do, YYYY'));
+    
 
-        setInterval(function () {
+        //var currentDay = moment().format('dddd MMMM Do YYYY, h:mm:ss a');
+        //$('#currentDay').text(currentDay);
 
-            updateTimeSlot();
+        //setInterval(function () {
 
-        }, 10000);
+            //updateTimeSlot();
+
+       // }, 10000);
 
         }
 
