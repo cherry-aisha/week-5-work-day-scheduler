@@ -2,7 +2,7 @@ var today = moment();
 
 
 var options = {
-    startHour: 9,
+    startHour: 0,
     endHour: 17,
 }
 
@@ -83,6 +83,10 @@ function updateTimeSlot () {
 
         //Set the day
         $('.lead').text(today.format('MMM Do, YYYY'));
+
+        //Update time slots to color code
+
+        updateTimeSlot();
 
         setInterval(displayTime, 1000);
 
