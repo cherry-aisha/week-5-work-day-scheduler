@@ -17,7 +17,7 @@ function createTimeSlot() {
 
         var hourSlot = $('<div id=hour>').addClass('col-sm-2 hour').text(moment(hour, 'h').format('h A'));
         var description = $('<div>').addClass('col-sm-8 row');
-        var textArea = $('<textarea>').addClass('col-md-10 description').val(savedTask);
+        var textArea = $('<textarea>').addClass('col-md-12 description').val(savedTask);
 
         var saveContainer = $('<div>').addClass('saveBtn d-flex justify-content-center align-items-center');
         saveContainer.on('click', onSaveTask);
@@ -46,7 +46,9 @@ function createTimeSlot() {
 
 function onSaveTask(e) {
 
-    var hour = $(e.target).parent().parent().attr("description")(hour);
+    (e).preventDefault();
+
+    var hour = $(e.target).parent().parent().attr('data-hour');
     var task = $(e.target).parent().prev().children().val();
 
     localStorage.setItem(hour, task);
@@ -75,21 +77,16 @@ function updateTimeSlot () {
     }
 
     function init() {
-        
+        //Bring up time slots
         createTimeSlot();
 
+        //Set the day
         $('.lead').text(today.format('MMM Do, YYYY'));
-    
 
-        //var currentDay = moment().format('dddd MMMM Do YYYY, h:mm:ss a');
-        //$('#currentDay').text(currentDay);
+        onSaveTask.on('click', 'saveBtn');
 
-        //setInterval(function () {
+        setInterval(displayTime, 1000);
 
-            //updateTimeSlot();
-
-       // }, 10000);
-
-        }
+    }
 
         init();
