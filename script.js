@@ -17,7 +17,8 @@ function createTimeSlot() {
 
         var hourSlot = $('<div id=hour>').addClass('col-sm-2 hour').text(moment(hour, 'h').format('h A'));
         var description = $('<div>').addClass('col-sm-8 row');
-        var textArea = $('<textarea>').addClass('col-md-12 description').val(savedTask);
+        var textArea = $('<textarea>').addClass('col-md-12 description');
+        textArea.val(savedTask);
 
         var saveContainer = $('<div>').addClass('saveBtn d-flex justify-content-center align-items-center');
         saveContainer.on('click', onSaveTask);
@@ -29,7 +30,7 @@ function createTimeSlot() {
         timeSlot.append(saveContainer);
         saveContainer.append(saveButton);
 
-        $('.container').append(timeSlot);
+        $(".container").append(timeSlot);
     }
 }
 
@@ -82,8 +83,6 @@ function updateTimeSlot () {
 
         //Set the day
         $('.lead').text(today.format('MMM Do, YYYY'));
-
-        onSaveTask.on('click', 'saveBtn');
 
         setInterval(displayTime, 1000);
 
