@@ -52,7 +52,7 @@ Each hour has save functionality so if you revisit the web page later on, your t
 
 ##### Demo
 
-![Watch the Demo] !(./Assets/demo.gif)
+![Watch the Demo](https://github.com/cherry-aisha/week-5-work-day-scheduler/blob/main/Assets/demo.gif?raw=true)
 
 ##### Visit the page
 Link to [Github Deployed Page]
