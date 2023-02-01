@@ -2,7 +2,7 @@ var today = moment();
 
 
 var options = {
-    startHour: 0,
+    startHour: 9,
     endHour: 17,
 }
 
